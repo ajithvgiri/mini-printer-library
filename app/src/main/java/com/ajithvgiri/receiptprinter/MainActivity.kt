@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.ajithvgiri.miniprinter.PrinterCommands
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -37,6 +38,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         searchBT()
+
+        button.setOnClickListener {
+            print("Hello world!")
+        }
     }
 
 
@@ -82,12 +87,12 @@ class MainActivity : AppCompatActivity() {
 
 
             Log.d(TAG, "Bluetooth Opened")
-            Toast.makeText(this, "Printer Connected", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Printer Connected", Toast.LENGTH_SHORT).show()
 
         } catch (e: Exception) {
             e.printStackTrace()
             Log.e(TAG, e.message)
-            Toast.makeText(this, "Printer Not Connected", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Printer Not Connected", Toast.LENGTH_SHORT).show()
         }
 
     }

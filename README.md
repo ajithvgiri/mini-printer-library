@@ -2,8 +2,7 @@
 mini printer library
 
 
-
-	```
+```
   allprojects {
 		repositories {
 			...
@@ -12,7 +11,7 @@ mini printer library
 	}
   ```
   
-  ```
+ ```
   dependencies {
 	        implementation 'com.github.ajithvgiri:mini-printer-library:0.0.1'
 	}

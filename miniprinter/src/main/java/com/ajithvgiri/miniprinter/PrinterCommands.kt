@@ -14,7 +14,7 @@ class PrinterCommands(private val mmSocket: BluetoothSocket) {
 
 
     //print custom
-    private fun printCustom(msg: String, size: Int, align: Int) {
+    fun printCustom(msg: String, size: Int, align: Int) {
         //Print config "mode"
         val cc = byteArrayOf(0x1B, 0x21, 0x03)  // 0- normal size text
         //byte[] cc1 = new byte[]{0x1B,0x21,0x00};  // 0- normal size text
@@ -51,7 +51,7 @@ class PrinterCommands(private val mmSocket: BluetoothSocket) {
     }
 
     //print photo
-    private fun printPhoto(resources: Resources, img: Int) {
+    fun printPhoto(resources: Resources, img: Int) {
         try {
             val bitmap = BitmapFactory.decodeResource(resources, img)
             if (bitmap != null) {
@@ -81,7 +81,7 @@ class PrinterCommands(private val mmSocket: BluetoothSocket) {
     }
 
     //print new line
-    private fun printNewLine() {
+    fun printNewLine() {
         try {
             mmSocket.outputStream.write(Commands.FEED_LINE)
         } catch (e: IOException) {
@@ -91,7 +91,7 @@ class PrinterCommands(private val mmSocket: BluetoothSocket) {
     }
 
     //print text
-    private fun printText(msg: String) {
+    fun printText(msg: String) {
         try {
             // Print normal text
             mmSocket.outputStream.write(msg.toByteArray())
@@ -102,7 +102,7 @@ class PrinterCommands(private val mmSocket: BluetoothSocket) {
     }
 
     //print byte[]
-    private fun printText(msg: ByteArray) {
+    fun printText(msg: ByteArray) {
         try {
             // Print normal text
             mmSocket.outputStream.write(msg)
@@ -114,14 +114,14 @@ class PrinterCommands(private val mmSocket: BluetoothSocket) {
     }
 
 
-    private fun dateandTime(str1: String, str2: String): String {
+    fun dateandTime(str1: String, str2: String): String {
         var ans = str1 + str2
         val n = 20 - str1.length + str2.length
         ans = str1 + String(CharArray(n)).replace("\u0000", " ") + str2
         return ans
     }
 
-    private fun printItems(str1: String, str2: String, str3: String): String {
+    fun printItems(str1: String, str2: String, str3: String): String {
         var ans = str1 + str2 + str3
         val lengthofspace = 39 - ans.length
         ans = str1 + " : " + str2 + String(CharArray(lengthofspace)).replace("\u0000", " ") + str3
@@ -129,7 +129,7 @@ class PrinterCommands(private val mmSocket: BluetoothSocket) {
     }
 
 
-    private fun leftRightAlign(str1: String, str2: String): String {
+    fun leftRightAlign(str1: String, str2: String): String {
         var ans = str1 + str2
         val n = 30 - str1.length + str2.length
 //        val n = 30 - str1.length + str2.length
@@ -137,7 +137,7 @@ class PrinterCommands(private val mmSocket: BluetoothSocket) {
         return ans
     }
 
-    private fun lefAlign(str1: String): String {
+    fun lefAlign(str1: String): String {
         var ans = str1
         val n = 40 - str1.length
 //        val n = 30 - str1.length + str2.length
@@ -146,7 +146,7 @@ class PrinterCommands(private val mmSocket: BluetoothSocket) {
     }
 
 
-    private fun getDateTime(): Array<String?> {
+    fun getDateTime(): Array<String?> {
         //        final Calendar c = Calendar.getInstance();
         //        String stringDate = DateFormat.getDateTimeInstance().format(date);
         //        dateTime[0] = c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.YEAR);

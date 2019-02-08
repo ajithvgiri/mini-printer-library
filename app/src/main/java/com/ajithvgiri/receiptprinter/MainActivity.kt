@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity() {
         searchBT()
 
         button.setOnClickListener {
-            print("Hello world!")
+            Toast.makeText(this,"Printing...",Toast.LENGTH_LONG).show()
+            PrinterCommands(mmSocket).printText("Hello worldr")
         }
     }
 
